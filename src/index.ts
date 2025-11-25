@@ -4,7 +4,7 @@ import './scenes/main.ts';
 import './scenes/second.ts';
 
 const engine = Engine.init();
-engine.setMaxFramesPerSecond(40);
+engine.setMaxFramesPerSecond(40); // Nax 40 FPS
 
 // Player
 const player = new Player({
@@ -16,7 +16,7 @@ const player = new Player({
     scene: '*'
 });
 
-// Game loop
+// 1st scene/level
 engine.setLoop('main', () => {
 
     player.update();
@@ -28,6 +28,7 @@ engine.setLoop('main', () => {
     }
 });
 
+// 2nd scene/level
 engine.setLoop('second', () => {
 
     player.update();

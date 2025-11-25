@@ -1,8 +1,6 @@
 import { Engine, Rectangle, Sprite, type RectangleOptions } from 'tscratch';
 
-interface PlayerOptions extends RectangleOptions {
-
-}
+interface PlayerOptions extends RectangleOptions {}
 
 export default class Player extends Rectangle {
 
@@ -17,6 +15,7 @@ export default class Player extends Rectangle {
 
     public level: string;
 
+    // Handle user input (w/a/s/space)
     private controls() {
         const engine = Engine.init();
 
@@ -34,6 +33,7 @@ export default class Player extends Rectangle {
     private moveInSteps(steps: number) {
         const engine = Engine.init();
 
+        // Pick specific objects to collide with based on their type
         const condition = (s: Sprite) =>
             (
                 s.discriminant === 'rectangle' ||
@@ -44,11 +44,14 @@ export default class Player extends Rectangle {
         const localObstacles = engine.sceneMap.get(this.level)!.sprites.filter(condition);
         const globalObstacles = engine.sceneMap.get('*')!.sprites.filter(condition);
 
+        // Array of obstacles that the player can collide with
         const obstacles = [...localObstacles, ...globalObstacles];
 
+        // Move & check collisions on both axes (X, Y)
         this.falling++;
         for (let i = 0; i < steps; i++) {
 
+            // Y axis
             const lastY = this.y;
             this.changeY(this.vY / steps);
 
@@ -62,6 +65,7 @@ export default class Player extends Rectangle {
                 }
             }
 
+            // X axis
             const lastX = this.x;
             this.changeX(this.vX / steps);
 
@@ -75,6 +79,7 @@ export default class Player extends Rectangle {
         }
     }
 
+    // Run every frame
     public update() {
         this.vX *= this.drag;
         this.vY += this.gravity;
@@ -83,6 +88,7 @@ export default class Player extends Rectangle {
         this.moveInSteps(Math.abs(this.vX) + Math.abs(this.vY));
     }
 
+    // Set initial properties
     constructor(options?: PlayerOptions) {
         super(options);
 
