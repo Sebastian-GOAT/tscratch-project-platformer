@@ -1,5 +1,5 @@
 import { canvas, Engine, Rectangle, Square, type RectangleOptions } from 'tscratch';
-import player from '@/player.ts';
+import { player } from '@/global.ts';
 
 const engine = Engine.init();
 
@@ -7,6 +7,7 @@ const engine = Engine.init();
 const obstacleSize = 40;
 const lowestMovingObstacleY = -175;
 const movingObstacleGap = 50;
+const moveDistance = 200;
 const speed = 2;
 
 // Floor
@@ -80,7 +81,7 @@ export default () => {
         const offset = offsets[i]!;
 
         // Move the moving sprites
-        moving.setX(150 * engine.sin(theta + offset));
+        moving.setX(moveDistance * engine.sin(theta + offset));
 
         // Fix collisions
         if (player.touching(moving)) {

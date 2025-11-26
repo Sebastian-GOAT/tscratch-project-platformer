@@ -1,5 +1,5 @@
 import { canvas, Engine } from 'tscratch';
-import player from './player.ts';
+import { player, timer } from './global.ts';
 import './scenes/main.ts';
 import './scenes/second.ts';
 import thirdLoop from './scenes/third.ts';
@@ -12,6 +12,7 @@ engine.setMaxFramesPerSecond(40); // Nax 40 FPS
 engine.setLoop('main', () => {
 
     player.update();
+    timer.update();
 
     if (player.x > canvas.width / 2) {
         player.setX(-canvas.width / 2);
@@ -24,6 +25,7 @@ engine.setLoop('main', () => {
 engine.setLoop('second', () => {
 
     player.update();
+    timer.update();
 
     if (player.x < -canvas.width / 2) {
         player.setX(canvas.width / 2);
@@ -41,12 +43,14 @@ engine.setLoop('second', () => {
 engine.setLoop('third', () => {
 
     player.update();
+    timer.update();
     thirdLoop();
 
     if (player.x < -canvas.width / 2) {
         player.setX(canvas.width / 2);
         engine.changeScene('fourth');
         player.level = 'fourth';
+        timer.stop(); // Stop the timer
     }
     if (player.y < -canvas.height / 2) {
         player.setY(canvas.height / 2);

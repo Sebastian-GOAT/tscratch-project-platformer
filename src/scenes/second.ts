@@ -18,6 +18,13 @@ new Rectangle({
     height: canvas.height,
     scene: 'second'
 });
+new Rectangle({
+    x: -75,
+    y: canvas.height / 2,
+    width: canvas.width - 75,
+    height: obstacleSize,
+    scene: 'second'
+});
 
 // Stairs
 new Square({ x: obstacleSize * -4, y: -180, scene: 'second' });

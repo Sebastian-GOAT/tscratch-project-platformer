@@ -1,8 +1,8 @@
-import { Engine, Rectangle, Sprite, type RectangleOptions } from 'tscratch';
+import { Engine, ImageSprite, Sprite, type ImageSpriteOptions } from 'tscratch';
 
-interface PlayerOptions extends RectangleOptions {}
+interface PlayerOptions extends ImageSpriteOptions {}
 
-export default class Player extends Rectangle {
+export default class Player extends ImageSprite {
 
     public gravity: number;
     public jumpForce: number;

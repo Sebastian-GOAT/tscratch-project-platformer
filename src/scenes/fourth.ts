@@ -25,6 +25,13 @@ new Rectangle({
     height: canvas.height - 75,
     scene: 'fourth'
 });
+new Rectangle({
+    x: -75,
+    y: canvas.height / 2,
+    width: canvas.width - 75,
+    height: obstacleSize,
+    scene: 'fourth'
+});
 
 // You won label
 new Text({
