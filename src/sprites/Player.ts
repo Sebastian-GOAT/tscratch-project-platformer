@@ -34,12 +34,7 @@ export default class Player extends ImageSprite {
         const engine = Engine.init();
 
         // Pick specific objects to collide with based on their type
-        const condition = (s: Sprite) =>
-            (
-                s.discriminant === 'rectangle' ||
-                s.discriminant === 'square' ||
-                s.discriminant === 'circle'
-            ) && s !== this;
+        const condition = (s: Sprite) => s.discriminant !== 'text' && s !== this;
 
         const localObstacles = engine.sceneMap.get(this.level)!.sprites.filter(condition);
         const globalObstacles = engine.sceneMap.get('*')!.sprites.filter(condition);
