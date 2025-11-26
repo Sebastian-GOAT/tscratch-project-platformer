@@ -29,3 +29,12 @@ new Square({ x: obstacleSize * 1, y: -80, scene: 'second' });
 new Square({ x: obstacleSize * 2, y: -60, scene: 'second' });
 new Square({ x: obstacleSize * 3, y: -40, scene: 'second' });
 new Square({ x: obstacleSize * 4, y: -20, scene: 'second' });
+new Square({ x: obstacleSize * 5, y: 0, scene: 'second' });
+new Square({ x: obstacleSize * 6, y: 20, scene: 'second' });
+new Square({ x: obstacleSize * 7, y: 40, scene: 'second' });
+new Square({ x: obstacleSize * 8, y: 60, scene: 'second' });
+new Square({ x: obstacleSize * 9, y: 80, scene: 'second' });
+new Square({ x: obstacleSize * 10, y: 100, scene: 'second' });
+
+// Pad
+new Square({ x: obstacleSize * 10.5, y: 180, scene: 'second', sideLength: 10 });
